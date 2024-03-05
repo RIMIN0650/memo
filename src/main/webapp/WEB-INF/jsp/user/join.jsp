@@ -17,7 +17,7 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<section class="d-flex justify-content-center">
 			<div class="my-3">
-				<h1 class="text-center mb-3">회원가입</h1>			
+				<h1 class="text-center mb-3">회원가입</h1>	
 				<input type="text" class="form-control col-12 mb-3" placeholder="ID">
 				<input type="password" class="form-control col-12 mb-3" placeholder="●●●●">
 				<input type="text" class="form-control col-12 mb-3" placeholder="비밀번호 확인">
