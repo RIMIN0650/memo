@@ -15,9 +15,11 @@
 		<section class="d-flex justify-content-center">
 			<div class="my-5">
 				<input type="text" class="form-control col-12 mb-3" placeholder="ID">
-				<input type="text" class="form-control col-12 mb-3" placeholder="Password">
-				<button type="button" class="btn btn-success col-12">로그인</button><br>
-				<a href="#" class="text-center">회원가입</a>
+				<input type="password" class="form-control col-12 mb-3" placeholder="Password">
+				<button type="button" class="btn btn-success col-12 mb-1">로그인</button>
+				<div class="text-center">
+					<a href="#">회원가입</a>
+				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
