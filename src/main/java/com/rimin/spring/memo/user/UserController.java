@@ -14,4 +14,11 @@ public class UserController {
 	
 	
 	
+	@GetMapping("/user/log-in")
+	public String logIn() {
+		return "user/login";
+	}
+	
+	
+	
 }
