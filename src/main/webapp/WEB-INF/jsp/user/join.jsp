@@ -24,6 +24,9 @@
 				<input type="text" class="form-control col-12 mb-3" id="name" placeholder="이름">
 				<input type="text" class="form-control col-12 mb-3" id="email" placeholder="이메일 주소">
 				<button type="button" class="btn btn-success col-12" id="joinBtn">가입</button>
+				<div class="text-center">
+					<a href="/user/log-in">로그인</a>
+				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>¸Ş¸ğ ·Î±×ÀÎ ÆäÀÌÁö</title>
+<title>ë©”ëª¨ ë¡œê·¸ì¸ í˜ì´ì§€</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
@@ -16,9 +16,9 @@
 			<div class="my-5">
 				<input type="text" class="form-control col-12 mb-3" placeholder="ID" id="identifier">
 				<input type="password" class="form-control col-12 mb-3" placeholder="Password" id="password">
-				<button type="button" class="btn btn-success col-12 mb-1" id="loginBtn">·Î±×ÀÎ</button>
+				<button type="button" class="btn btn-success col-12 mb-1" id="loginBtn">ë¡œê·¸ì¸</button>
 				<div class="text-center">
-					<a href="/user/join-view">È¸¿ø°¡ÀÔ</a>
+					<a href="/user/join-view">íšŒì›ê°€ì…</a>
 				</div>
 			</div>
 		</section>
@@ -43,12 +43,12 @@
 			let password = $("#password").val();
 			
 			if(id == ""){
-				alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 				return;
 			}
 			
 			if(password == ""){
-				alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 				return;
 			}
 			
@@ -58,14 +58,14 @@
 				, data:{"loginId":id, "password":password}
 				, success:function(data) {
 					if(data.result == "success"){
-						alert("È¯¿µÇÕ´Ï´Ù");
+						alert("í™˜ì˜í•©ë‹ˆë‹¤");
 						location.href = "/post/list-view";
 					} else {
-						alert("·Î±×ÀÎ ½ÇÆĞ");
+						alert("ë¡œê·¸ì¸ ì‹¤íŒ¨");
 					}
 				}
 				, error:function(){
-					alert("·Î±×ÀÎ ¿¡·¯");
+					alert("ë¡œê·¸ì¸ ì—ëŸ¬");
 				}	
 			});
 		});	
