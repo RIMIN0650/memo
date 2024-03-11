@@ -11,5 +11,9 @@ public class PostController {
 		return "/post/list";
 	}
 	
+	@GetMapping("/post/post-memo")
+	public String postMemo() {
+		return "post/postMemo";
+	}
 	
 }

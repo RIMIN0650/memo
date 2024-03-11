@@ -2,15 +2,33 @@
 #wrap{
 	width:1200px;
 	margin:0 auto;
+	background-color: SeaGreen;
 }
 
 header{
 	height:100px;
 	background-color:#dddddd;
 }
+.container{
+	width:1000px;
+	margin:0 auto;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	background-color: lightblue;
+}
+.etc-function{
+	width:1000px;
+	height:100px;
+	margin:0 auto;
+	margin-bottom:20px;
+	
+}
 
-section{
+.input-section{
+	width:1000px;
 	height:500px;
+	margin:0 auto;
+	margin-top:40px;
 }
 
 footer{

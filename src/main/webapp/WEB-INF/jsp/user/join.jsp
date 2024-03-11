@@ -82,7 +82,7 @@
 				, success:function(data){
 					if(data.result == "success"){
 						// 로그인 페이지로 이동
-						location.href = "/user/log-in"
+						location.href = "/user/log-in";
 					} else {
 						alert("회원 가입 실패");
 					}
