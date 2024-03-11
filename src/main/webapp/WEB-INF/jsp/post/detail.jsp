@@ -18,17 +18,18 @@
 				<h1 class="text-center mb-3">메모입력</h1>
 				<div>
 					<div class="d-flex justify-content-between align-items-center mb-3">
-						<label class="input-label col-1">제목</label><input type="text" class="form-control text-input col-10" id="titleInput">
+						<label class="input-label col-1">제목</label><input type="text" class="form-control text-input col-10" id="titleInput" value="${post.title }">
 					</div>
-					<input type="text" class="form-control text-input" style="height:300px;" id="contentsInput">
+					<input type="text" class="form-control text-input" style="height:300px;" id="contentsInput" value="${post.contents  }">
 					<button type="button" class="btn btn-warning mt-1" id="addFileBtn">파일첨부</button>
 				</div>
 				
 			</div>
-			<div class="etc-function d-flex justify-content-between align-items-center">
-				<button type="button" class="btn btn-warning" id="toListBtn">목록으로</button>				
-				<button type="button" class="btn btn-warning" id="saveBtn">저장</button>
+			<div class="etc-function d-flex justify-content-center align-items-center">
+				<button type="button" class="btn btn-warning" id="modifyBtn">수정하기</button>				
+				<button type="button" class="btn btn-danger" id="deleteBtn">삭제</button>
 			</div>
+			<button type="button" class="btn btn-danger" id="toListBtn">목록으로</button>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
     
 <!DOCTYPE html>
 <html>
@@ -22,41 +24,16 @@
 						<th>No.</th>
 						<th>제목</th>
 						<th>시간</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>3</td>
-						<td>중요한 메모</td>
-						<td>2025-01-04</td>
-						<td><button type="button" class="btn btn-danger">삭제</button></td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>중요한</td>
-						<td>2025-11-24</td>
-						<td><button type="button" class="btn btn-danger">삭제</button></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>메모</td>
-						<td>2025-08-12</td>
-						<td><button type="button" class="btn btn-danger">삭제</button></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>메모</td>
-						<td>2025-08-12</td>
-						<td><button type="button" class="btn btn-danger">삭제</button></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>메모</td>
-						<td>2025-08-12</td>
-						<td><button type="button" class="btn btn-danger">삭제</button></td>
-					</tr>
-					
+					<c:forEach var="post" items="${postList }">
+						<tr>
+							<td>${post.id }</td>
+							<td><a href="/post/detail-view?id=${post.id }">${post.title }</a></td>
+							<td><fmt:formatDate value="${post.createdAt }" pattern="yyyy년 M월 d일 H시 m분 s초"/></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			</div>

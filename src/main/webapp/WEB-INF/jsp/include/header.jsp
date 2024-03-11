@@ -7,7 +7,3 @@
 				<div class="mr-4">${userName } <a href="/user/logout">로그아웃</a> </div>
 			</c:if>
 		</header>
-		
-		
-		
-		

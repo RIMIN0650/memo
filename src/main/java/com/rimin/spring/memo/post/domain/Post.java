@@ -2,56 +2,48 @@ package com.rimin.spring.memo.post.domain;
 
 import java.util.Date;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Table(name="post")
+@Entity
 public class Post {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String userId;
+	
+	@Column(name="userId")
+	private int userId;
+	
 	private String title;
-	private String content;
+	private String contents;
+	
+	@Column(name="imagePath")
 	private String imagePath;
+	
+	@UpdateTimestamp
+	@Column(name="createdAt", updatable=false)
 	private Date createdAt;
+	
+	@UpdateTimestamp
+	@Column(name="updatedAt")
 	private Date updatedAt;
+		
 	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
 }
