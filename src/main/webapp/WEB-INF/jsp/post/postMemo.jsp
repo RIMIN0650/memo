@@ -21,9 +21,8 @@
 						<label class="input-label col-1">제목</label><input type="text" class="form-control text-input col-10" id="titleInput">
 					</div>
 					<input type="text" class="form-control text-input" style="height:300px;" id="contentsInput">
-					<button type="button" class="btn btn-warning mt-1" id="addFileBtn">파일첨부</button>
+					<input type="file" id="fileInput" class="mt-3">
 				</div>
-				
 			</div>
 			<div class="etc-function d-flex justify-content-between align-items-center">
 				<button type="button" class="btn btn-warning" id="toListBtn">목록으로</button>				
@@ -43,6 +42,7 @@
 		$(document).ready(function(){
 			
 			$("#addFileBtn").on("click",function(){
+				
 				alert("파일 첨부 버튼 정상 작동");
 			});
 			
@@ -54,6 +54,8 @@
 				let title = $("#titleInput").val();
 				let contents = $("#contentsInput").val();
 				
+				let file = $("#fileInput")[0].files[0];
+				
 				if(title == ""){
 					alert("제목을 입력하세요");
 					return;
@@ -64,10 +66,18 @@
 					return;
 				}
 				
+				let formData = new FormData();
+				formData.append("title", title);
+				formData.append("contents", contents);
+				formData.append("imageFile", file)
+				
 				$.ajax({
 					type:"post"
 					, url:"/post/create"
-					, data:{"title":title, "contents":contents}
+					, data:formData
+					, enctype:"multipart/form-data" // 파일 업로드 필수 옵션 
+					, processData:false // 파일 업로드 필수 옵션 
+					, contentType:false // 파일 업로드 필수 옵션 
 					, success:function(data){
 						if(data.result == "success"){
 							location.href = "/post/list-view";
