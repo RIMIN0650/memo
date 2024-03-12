@@ -21,7 +21,8 @@
 						<label class="input-label col-1">제목</label><input type="text" class="form-control text-input col-10" id="titleInput" value="${post.title }">
 					</div>
 					<input type="text" class="form-control text-input" style="height:300px;" id="contentsInput" value="${post.contents  }">
-					<button type="button" class="btn btn-warning mt-1" id="addFileBtn">파일첨부</button>
+					<img src="${post.imagePath }">
+					
 				</div>
 				
 			</div>
@@ -34,7 +35,7 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
 	</div>
-	
+		
 	
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

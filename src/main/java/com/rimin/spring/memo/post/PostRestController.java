@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.rimin.spring.memo.post.domain.Post;
 import com.rimin.spring.memo.post.service.PostService;
@@ -25,6 +26,7 @@ public class PostRestController {
 	public Map<String, String> createMemo(
 			@RequestParam("title") String title
 			, @RequestParam("contents") String contents
+			, @RequestParam("imageFile") MultipartFile file
 			, HttpSession session) {
 		
 		// 로그인한 사용자의 pk 를 얻어온다.
@@ -34,7 +36,7 @@ public class PostRestController {
 		//getAttribute : object return
 		
 		
-		Post post = postService.addPost(userId, title, contents);
+		Post post = postService.addPost(userId, title, contents, file);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
@@ -47,6 +49,9 @@ public class PostRestController {
 		return resultMap;
 		
 	}
+	
+	
+	
 	
 	
 

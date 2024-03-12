@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.rimin.spring.memo.common.FileManager;
 import com.rimin.spring.memo.post.domain.Post;
 import com.rimin.spring.memo.post.repository.PostRepository;
 
@@ -16,15 +18,21 @@ public class PostService {
 	private PostRepository postRepository;
 	
 	
-	public Post addPost(int userId, String title, String contents) {
+	public Post addPost(int userId, String title, String contents, MultipartFile file) {
 		// 로그인 성공하면 id 멤버변수가 세션에 저장해뒀음
 		// 로그인 상태 사용자가 현재 작성자
+		
+		
+		// file을 특정 경로에 저장한다.
+		// 클라이언트에서 접근 가능한 url 정보를 얻는다.
+		String imagePath = FileManager.saveFile(userId, file);
 		
 		Post post = Post.builder()
 					// .뒤가 멤버변수 이름 괄호 안이 parameter 로 전달받는 값
 					.userId(userId)
 					.title(title)
 					.contents(contents)
+					.imagePath(imagePath)
 					.build();
 		return postRepository.save(post);
 		// save : 그 행의 data 를 entity 클래스 객체로 return 
@@ -47,8 +55,5 @@ public class PostService {
 //		return post;
 		return optionalPost.orElse(null);
 		
-		
-		
 	}
-	
 }
