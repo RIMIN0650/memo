@@ -63,21 +63,14 @@
 						alert("삭제 에러");
 					}
 				});
-				
-				
 			});
-			
-			
-			
-			
+
 			$("#updateBtn").on("click",function(){
 				
 				let title = $("#titleInput").val();
 				let contents = $("#contentsInput").val();
 				let postId = $("#contents").data("post-id");
-				
-				
-				
+
 				if(title == ""){
 					alert("제목을 입력하세요");
 					return ;
@@ -101,12 +94,7 @@
 					, error:function(){
 						alert("수정 에러");
 					}
-					
-					
-					
 				});
-				
-				
 			})
 			
 			$("#toListBtn").on("click",function(){

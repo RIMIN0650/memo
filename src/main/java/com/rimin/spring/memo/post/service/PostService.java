@@ -17,7 +17,6 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	
 	public Post addPost(int userId, String title, String contents, MultipartFile file) {
 		// 로그인 성공하면 id 멤버변수가 세션에 저장해뒀음
 		// 로그인 상태 사용자가 현재 작성자
@@ -69,10 +68,9 @@ public class PostService {
 				.title(title) // .객체의 멤버변수 이름 (멤버변수에 저장할 값 파라미터로 전달받음)
 				.contents(contents) // .객체의 멤버변수 이름 (멤버변수에 저장할 값 파라미터로 전달받음)
 				.build();
-			
+
 			post = postRepository.save(post);
 		}
-		
 		return post;
 	}
 	
@@ -85,12 +83,12 @@ public class PostService {
 		Post post = optionalPost.orElse(null);
 		
 		if(post != null) {
+			FileManager.removeFile(post.getImagePath());	
 			postRepository.delete(post);
 		}
-		
 		return post;
-		
 	}
+	
 	
 	
 	
