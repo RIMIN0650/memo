@@ -13,7 +13,7 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<section>
-			<div class="input-section">
+			<div class="input-section" data-post-id=${post.id } id="contents">
 			
 				<h1 class="text-center mb-3">메모입력</h1>
 				<div>
@@ -27,10 +27,10 @@
 				
 			</div>
 			<div class="etc-function d-flex justify-content-center align-items-center">
-				<button type="button" class="btn btn-warning" id="modifyBtn">수정하기</button>				
+				<button type="button" class="btn btn-warning" id="updateBtn">수정하기</button>				
 				<button type="button" class="btn btn-danger" id="deleteBtn">삭제</button>
 			</div>
-			<button type="button" class="btn btn-danger" id="toListBtn">목록으로</button>
+			<button type="button" class="btn btn-danger ml-3 mb-3" id="toListBtn">목록으로</button>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
@@ -43,49 +43,76 @@
 	
 	<script>
 		$(document).ready(function(){
-			
-			$("#addFileBtn").on("click",function(){
-				alert("파일 첨부 버튼 정상 작동");
-			});
-			
-			$("#toListBtn").on("click",function(){
-				location.href = "/post/list-view"
-			});
-			
-			$("#saveBtn").on("click",function(){
-				let title = $("#titleInput").val();
-				let contents = $("#contentsInput").val();
+			$("#deleteBtn").on("click",function(){
 				
-				if(title == ""){
-					alert("제목을 입력하세요");
-					return;
-				}
 				
-				if(contents == ""){
-					alert("내용을 입력하세요");
-					return;
-				}
-				
+				let postId = $("#contents").data("post-id");
+
 				$.ajax({
-					type:"post"
-					, url:"/post/create"
-					, data:{"title":title, "contents":contents}
+					type:"delete"
+					, url:"/post/delete"
+					, data:{"id":postId}
 					, success:function(data){
 						if(data.result == "success"){
-							location.href = "/post/list-view";
+							location.href = "/post/list-view"
 						} else {
-							alert("메모 저장 실패");
+							alert("삭제 실패");
 						}
 					}
 					, error:function(){
-						alert("메모 저장 에러");
+						alert("삭제 에러");
 					}
+				});
+				
+				
+			});
+			
+			
+			
+			
+			$("#updateBtn").on("click",function(){
+				
+				let title = $("#titleInput").val();
+				let contents = $("#contentsInput").val();
+				let postId = $("#contents").data("post-id");
+				
+				
+				
+				if(title == ""){
+					alert("제목을 입력하세요");
+					return ;
+				}
+				if(contents == ""){
+					alert("내용을 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"put"
+					, url:"/post/update"
+					, data:{"id":postId, "title":title, "contents":contents}
+					, success:function(data){
+						if(data.result == "success"){
+							location.href = "/post/list-view"
+						} else {
+							alert("수정 실패");
+						}
+					}
+					, error:function(){
+						alert("수정 에러");
+					}
+					
 					
 					
 				});
 				
 				
+			})
+			
+			$("#toListBtn").on("click",function(){
+				location.href = "/post/list-view"
 			});
+			
 			
 			
 		});

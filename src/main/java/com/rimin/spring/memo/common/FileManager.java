@@ -15,6 +15,14 @@ public class FileManager {
 	
 	public static String saveFile(int userId, MultipartFile file) {
 		
+		// 첨부파일이 없을 경우 아래 코드가 실행되지 않도록 
+		// null 을 return 하도록
+		// 객체를 return 하는 객체에서 null을 return 하면 기능 수행이 제대로 되지 않았다는 것을 의미
+		
+		if(file == null) {
+			return null;
+		}
+		
 		// 같은 이름의 파일 처리
 		// 폴더(디렉토리)만들어서 파일 저장
 		// 로그인한 사용자의 userId를 폴더 이름으로

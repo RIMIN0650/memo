@@ -56,4 +56,47 @@ public class PostService {
 		return optionalPost.orElse(null);
 		
 	}
+	
+	// 메모 수정
+	public Post updatePost(int id, String title, String contents){
+		// jpa update
+		// 수정 대상 데이터 조회 > 조회 결과는 객체 형태로 전달 > 조회된 객체에서 필요한 값 수정 > 해당 객체를 저장
+		Optional<Post> optionalPost = postRepository.findById(id);
+		Post post = optionalPost.orElse(null);
+		
+		if(post != null) {
+			post = post.toBuilder()
+				.title(title) // .객체의 멤버변수 이름 (멤버변수에 저장할 값 파라미터로 전달받음)
+				.contents(contents) // .객체의 멤버변수 이름 (멤버변수에 저장할 값 파라미터로 전달받음)
+				.build();
+			
+			post = postRepository.save(post);
+		}
+		
+		return post;
+	}
+	
+	// 게시글 삭제
+	public Post deletePost(int id){
+		// 대상이 되는 게시글 정보 얻어오고
+		// 확인 후 그 정보 삭제
+		
+		Optional<Post> optionalPost = postRepository.findById(id);
+		Post post = optionalPost.orElse(null);
+		
+		if(post != null) {
+			postRepository.delete(post);
+		}
+		
+		return post;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
